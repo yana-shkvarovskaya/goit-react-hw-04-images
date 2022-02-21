@@ -1,17 +1,21 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import React, { useState } from "react";
+import { ToastContainer } from 'react-toastify';
+import Searchbar from "./Searchbar/Searchbar";
+import ImageGallery from "./ImageGallery/ImageGallery";
+import 'index.css'
+
+export default function App () {
+  const [pictureName, setPictureName] = useState('');
+
+
+ const handleFormSubmit = pictureName => {
+    setPictureName(pictureName );
+  };
+    return (
+      <div className="App">
+        <Searchbar onSubmit={handleFormSubmit} />
+        <ImageGallery pictureName={pictureName}/>
+        <ToastContainer autoClose={3000} />
+      </div>
+    );
+  }
